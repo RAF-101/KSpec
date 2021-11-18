@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="KSpec" target="17" />
+      <module name="KSpec" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
