@@ -22,7 +22,7 @@ public class Config {
     private List<String> bans = new ArrayList<String>();
 
     // json string
-    Config(File config){
+    public Config(File config){
         JSONParser parser = new JSONParser();
 
         try (Reader reader = new FileReader(config)) {
@@ -146,28 +146,28 @@ public class Config {
         } return false;
     }
 
-    boolean checkStorageSizeLimit(int fileSize){
+    public boolean checkStorageSizeLimit(int fileSize){
         return (filesSize + fileSize < filesSizeLimit);
     } // added size
 
-    boolean setFileCountLimit(int limit){
+    public boolean setFileCountLimit(int limit){
         if(filesCountLimit == 0){
             filesCountLimit = limit;
             return true;
         } return false;
     }
 
-    boolean checkFileCountLimit(int fileCount){
+    public boolean checkFileCountLimit(int fileCount){
         return (filesCount + fileCount < filesCountLimit);
     }
 
-    boolean addExtensionBan(String ext){
+    public boolean addExtensionBan(String ext){
         if(bans.contains(ext)) return false;
         bans.add(ext);
         return true;
     }
 
-    boolean removeExtensionBan(String ext){
+    public boolean removeExtensionBan(String ext){
         if(bans.contains(ext)) {
             bans.remove(ext);
             return true;
@@ -175,11 +175,14 @@ public class Config {
         return false;
     }
 
-    boolean extensionAllowed(String ext){
-        return !bans.contains(ext);
+    public boolean extensionAllowed(String ext){
+        if(bans.contains(ext)) {
+            return false;
+        }
+        return true;
     }
 
-    int createUser(String Username, String Password, int Permission){
+    public int createUser(String Username, String Password, int Permission){
         User newUser = new User(Username, Password, Permission);
         if(!User.existingUser(newUser, users)) {
             users.add(newUser);
@@ -188,15 +191,15 @@ public class Config {
         else return 1; // user already exists
     }
 
-    boolean hasPermission(int action){
+    public boolean hasPermission(int action){
         return ( permissions > 100000 || (permissions / action) % 10 == 1);
     }// weigh action over permission
 
-    void setOccupied(boolean occupied){
+    public void setOccupied(boolean occupied){
         this.occupied = occupied;
     }
 
-    boolean checkOccupied(){
+    public boolean checkOccupied(){
         return occupied;
     }
 }
