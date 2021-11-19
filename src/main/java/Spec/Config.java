@@ -191,6 +191,20 @@ public class Config {
         else return 1; // user already exists
     }
 
+    /*
+    * 0 - Successful Login
+    * 1 - Nonexistant User
+     */
+    public int loginUser(String Username, String Password){
+        for(User user : users){
+            if(user.getUsername().equals(Username) && user.getPassword().equals(Password)){
+                permissions = user.getPermissions();
+                return 0;
+            }
+        }
+        return 1;
+    }
+
     public boolean hasPermission(int action){
         return ( permissions > 100000 || (permissions / action) % 10 == 1);
     }// weigh action over permission
