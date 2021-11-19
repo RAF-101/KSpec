@@ -15,6 +15,7 @@ public class Config {
     private int permissions = 0;
     private int filesSize = 0;
     private int filesCount = 0;
+    private int fileSizeLimit = 0;
     private int filesSizeLimit = 0;
     private int filesCountLimit = 0;
 
@@ -147,7 +148,7 @@ public class Config {
     }
 
     public boolean checkStorageSizeLimit(int fileSize){
-        return (filesSize + fileSize < filesSizeLimit);
+        return ( filesSizeLimit == 0 || (filesSize + fileSize < filesSizeLimit) );
     } // added size
 
     public boolean setFileCountLimit(int limit){
@@ -158,7 +159,18 @@ public class Config {
     }
 
     public boolean checkFileCountLimit(int fileCount){
-        return (filesCount + fileCount < filesCountLimit);
+        return ( filesCountLimit == 0 || (filesCount + fileCount < filesCountLimit) );
+    }
+
+    public boolean setFileSizeLimit(int limit){
+        if(fileSizeLimit == 0){
+            fileSizeLimit = limit;
+            return true;
+        } return false;
+    }
+
+    public boolean checkFileSizeLimit(int size){
+        return ( fileSizeLimit == 0 || (size < fileSizeLimit) );
     }
 
     public boolean addExtensionBan(String ext){
