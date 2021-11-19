@@ -27,6 +27,11 @@ public interface Specifikacija {
         return 404;
     }
 
+    private String retrieveExt(String ext)
+    {
+        return "";
+    }
+
     public int connectStorage(String Path); // check if existing, update config.occupied
     public int disconnectStorage(); // leave storage, update config.occupied
 
