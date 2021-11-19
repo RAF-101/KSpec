@@ -4,25 +4,45 @@ import java.util.List;
 
 public interface Specifikacija {
     //inicijalizacija
-    int initStorage(String Path); // create config and folder
-    int promptInitStorage(String Path); // ask if they want to create a storage
-    int connectStorage(String Path); // check if existing, update config.occupied
-    int disconnectStorage(); // leave storage, update config.occupied
-    int requestLogin(); // request credntials upon accessing
-    int requestNewUser(); // create new user upon init
 
-    int createFile(String name, String destPath); //empty file
-    int createFolder(String name, String destPath);
-    int uploadFile(String srcPath, String destPath);
-    int uploadFiles(List<String> srcPaths, List<String> destPaths);
-    int deleteFile(String path);
-    int deleteFolder(String path);
-    List<String> listFiles(String path);
-    int moveFile(String srcPath, String destPath);
-    int downloadPath(String srcPath, String destPath);
-    int downloadFolder(String srcPath, String destPath);
-    int downloadFile(String srcPath, String destPath);
+    private int initStorage(String Path) // create config and folder
+    {
+        return 404;
+    }
+    private int promptInitStorage(String Path) // ask if they want to create a storage
+    {
+        return 404;
+    }
+    private int requestLogin() // request credntials upon accessing
+    {
+        return 404;
+    }
+    private int updateConfig() // change the file on drive/local memory
+    {
+        return 404;
+    }
 
-    int updateConfig(); // change the file on drive/local memory
-    int initConfig(); // create a config file in the working dir
+    private int initConfig() // create a config file in the working dir
+    {
+        return 404;
+    }
+
+    public int connectStorage(String Path); // check if existing, update config.occupied
+    public int disconnectStorage(); // leave storage, update config.occupied
+
+
+    public int requestNewUser(); // create new user upon init
+
+    public int createFile(String name, String destPath); //empty file
+    public int createFolder(String name, String destPath);
+    public int uploadFile(String srcPath, String destPath);
+    public int uploadFiles(List<String> srcPaths, List<String> destPaths);
+    public int deleteFile(String path);
+    public int deleteFolder(String path);
+    public List<String> listFiles(String path);
+    public int moveFile(String srcPath, String destPath);
+    public int downloadFolder(String srcPath, String destPath);
+    public int downloadFile(String srcPath, String destPath);
+    public int addExtBan(String ext);
+    public int removeExtBan(String ext);
 }
