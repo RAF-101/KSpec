@@ -9,20 +9,55 @@ import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+/**
+ * Private class for handling storage config
+ */
 public class Config {
-
+    /**
+     * Private variable
+     */
     private boolean occupied = false;
+    /**
+     * Private variable
+     */
     private int permissions = 0;
+    /**
+     * Private variable
+     */
     private int filesSize = 0;
+    /**
+     * Private variable
+     */
     private int filesCount = 0;
+    /**
+     * Private variable
+     */
     private int fileSizeLimit = 0;
+    /**
+     * Private variable
+     */
     private int filesSizeLimit = 0;
+    /**
+     * Private variable
+     */
     private int filesCountLimit = 0;
 
+    /**
+     * Private variable
+     */
     private List<User> users = new ArrayList<User>();
+
+    /**
+     * Private variable
+     */
     private List<String> bans = new ArrayList<String>();
 
     // json string
+
+    /**
+     * Generates a config based off of the config.json
+     * @param config File typed config
+     */
     public Config(File config){
         JSONParser parser = new JSONParser();
 
@@ -66,6 +101,10 @@ public class Config {
         }
     }
 
+
+    /**
+     * @return JSON parsable String to store.
+     */
     public String getJSONForm(){
         JSONObject konfig = new JSONObject();
 
@@ -97,6 +136,9 @@ public class Config {
         return konfig.toJSONString();
     }
 
+    /**
+     * @return JSON parsable String to init storage.
+     */
     public static String initConfig(){
         JSONObject konfig = new JSONObject();
         List<User> users = new ArrayList<User>();
@@ -132,14 +174,28 @@ public class Config {
         return konfig.toJSONString();
     }
 
+
+    /**
+     * Adds file count
+     * @param count Number of files to add
+     */
     public void addFileCount(int count){
         filesCount += count;
     }
 
+    /**
+     * Adds file size
+     * @param size Size of files to add
+     */
     public void addFileSize(int size){
         filesSize += size;
     }
 
+    /**
+     * Limit storage total size
+     * @param bytes Amount of bytes
+     * @return whether it was successful
+     */
     public boolean setStorageSize(int bytes){
         if(filesSizeLimit == 0) {
             filesSizeLimit = bytes;
@@ -147,10 +203,20 @@ public class Config {
         } return false;
     }
 
+    /**
+     * Check if file breaks the limit
+     * @param fileSize File Size in bytes
+     * @return whether it was successful
+     */
     public boolean checkStorageSizeLimit(int fileSize){
         return ( filesSizeLimit == 0 || (filesSize + fileSize < filesSizeLimit) );
     } // added size
 
+    /**
+     * Limit storage total file count, folders excluded
+     * @param limit Amount of files to limit to
+     * @return whether it was successful
+     */
     public boolean setFileCountLimit(int limit){
         if(filesCountLimit == 0){
             filesCountLimit = limit;
@@ -158,10 +224,20 @@ public class Config {
         } return false;
     }
 
+    /**
+     * Check if adding fileCount files would pass the limit
+     * @param fileCount amount of files
+     * @return whether it was successful
+     */
     public boolean checkFileCountLimit(int fileCount){
         return ( filesCountLimit == 0 || (filesCount + fileCount < filesCountLimit) );
     }
 
+    /**
+     * Set single file size limit
+     * @param limit Size limit in bytes
+     * @return whether it was successful
+     */
     public boolean setFileSizeLimit(int limit){
         if(fileSizeLimit == 0){
             fileSizeLimit = limit;
@@ -169,16 +245,32 @@ public class Config {
         } return false;
     }
 
+    /**
+     * Check if file is withing the limits
+     * @param size File size in bytes
+     * @return whether it was successful
+     */
     public boolean checkFileSizeLimit(int size){
         return ( fileSizeLimit == 0 || (size < fileSizeLimit) );
     }
 
+
+    /**
+     * Add extension ban
+     * @param ext extension to ban
+     * @return whether it was successful
+     */
     public boolean addExtensionBan(String ext){
         if(bans.contains(ext)) return false;
         bans.add(ext);
         return true;
     }
 
+    /**
+     * Unban extension
+     * @param ext extension to unban
+     * @return whether it was successful
+     */
     public boolean removeExtensionBan(String ext){
         if(bans.contains(ext)) {
             bans.remove(ext);
@@ -187,6 +279,11 @@ public class Config {
         return false;
     }
 
+    /**
+     * Check whether extension is allowed
+     * @param ext Extension to check
+     * @return whether it was successful
+     */
     public boolean extensionAllowed(String ext){
         if(bans.contains(ext)) {
             return false;
@@ -194,6 +291,13 @@ public class Config {
         return true;
     }
 
+    /**
+     * Craete a new user in the storage
+     * @param Username   new user username
+     * @param Password   new user password
+     * @param Permission integer permission 1 read, 10 write, 100 move, 1000 delete, 10000 owner
+     * @return whether it was successful
+     */
     public int createUser(String Username, String Password, int Permission){
         User newUser = new User(Username, Password, Permission);
         if(!User.existingUser(newUser, users)) {
@@ -203,9 +307,12 @@ public class Config {
         else return 1; // user already exists
     }
 
-    /*
-    * 0 - Successful Login
-    * 1 - Nonexistant User
+
+    /**
+     * Check if user exists
+     * @param Username user username
+     * @param Password user password
+     * @return whether it was successful
      */
     public int loginUser(String Username, String Password){
         for(User user : users){
@@ -217,14 +324,27 @@ public class Config {
         return 1;
     }
 
+    /**
+     * Check if user has permissions for action
+     * @param action action signature
+     * @return whether it was successful
+     */
     public boolean hasPermission(int action){
         return ( permissions > 100000 || (permissions / action) % 10 == 1);
     }// weigh action over permission
 
+    /**
+     * Mark storage as occupied or free
+     * @param occupied Is storage occupied
+     */
     public void setOccupied(boolean occupied){
         this.occupied = occupied;
     }
 
+    /**
+     * Check if storage is occupied
+     * @return whether it was successful
+     */
     public boolean checkOccupied(){
         return occupied;
     }

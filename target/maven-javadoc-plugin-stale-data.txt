@@ -1,0 +1,53 @@
+@options
+@packages
+@argfile
+-classpath
+'C:/Users/KYGAS/.m2/repository/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar;C:/Users/KYGAS/.m2/repository/junit/junit/4.10/junit-4.10.jar;C:/Users/KYGAS/.m2/repository/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar'
+-encoding
+'UTF-8'
+-private
+-source
+'11'
+-sourcepath
+'C:/Users/KYGAS/Desktop/KSpec/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2021. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/KYGAS/Desktop/KSpec/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'KSpec 1.1-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' 'C:/Users/KYGAS/Desktop/KSpec/target/javadoc-bundle-options'
+-nohelp
+-use
+-version
+-windowtitle
+'KSpec 1.1-SNAPSHOT API'
+Spec
+'C:/Users/KYGAS/Desktop/KSpec/src/main/java/Spec/Config.java'
+'C:/Users/KYGAS/Desktop/KSpec/src/main/java/Spec/Specifikacija.java'
+'C:/Users/KYGAS/Desktop/KSpec/src/main/java/Spec/User.java'
+C:\Users\KYGAS\.m2\repository\com\googlecode\json-simple\json-simple\1.1.1\json-simple-1.1.1.jar = 1637190834303
+C:\Users\KYGAS\.m2\repository\junit\junit\4.10\junit-4.10.jar = 1637190834393
+C:\Users\KYGAS\.m2\repository\org\hamcrest\hamcrest-core\1.1\hamcrest-core-1.1.jar = 1637190834358
+C:\Users\KYGAS\Desktop\KSpec\src\main\java = 1637250196659
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\allclasses-index.html = 1637372251386
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\allpackages-index.html = 1637372251388
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\element-list = 1637372251347
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\index-all.html = 1637372251406
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\index.html = 1637372251408
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\jquery-ui.overrides.css = 1637372251428
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\member-search-index.js = 1637372251393
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\module-search-index.js = 1637372251389
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\overview-tree.html = 1637372251375
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\package-search-index.js = 1637372251391
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\script.js = 1637372251411
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\search.js = 1637372251413
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\stylesheet.css = 1637372251410
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\tag-search-index.js = 1637372251394
+C:\Users\KYGAS\Desktop\KSpec\target\site\apidocs\type-search-index.js = 1637372251392
